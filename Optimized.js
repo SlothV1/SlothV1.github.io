@@ -180,7 +180,7 @@ document.getElementById("button").onclick = function(){
         setTimeout(() => {
             document.getElementById("Message").textContent = ""
             document.getElementById("answer").value = ``;
-            gamemode();
+            dogame();
         }, 2000);}
 
     else if (response !== String(blank1)+String(blank2) || response !== String(blank1)+", "+String(blank2)) {
@@ -211,7 +211,6 @@ function gamemode(){
         started = true
         gamemode1 = "easy";
         square.hidden=true;
-        square2.hidden = false;
         console.log(gamemode1);
         dogame(gamemode1);
     }
@@ -219,7 +218,6 @@ function gamemode(){
         started = true
         gamemode1 = "hard";
         square.hidden=true;
-        square2.hidden = false;
         console.log(gamemode1);
         dogame(gamemode1);
 
@@ -235,13 +233,12 @@ function tutorial1(){
 
     let tutorial = document.getElementById("tutorial")    
     if (tutorial.style.opacity == 100){
+        square2.hidden = true
         if (started == true){
-            square2.hidden = false
             square.hidden = true
             }
     
         else if (started == false){
-            square2.hidden = true
             square.hidden = false
         }
         tutorial.style.opacity = 0
