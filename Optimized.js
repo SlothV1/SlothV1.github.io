@@ -184,7 +184,7 @@ document.getElementById("button").onclick = function(){
         setTimeout(() => {
             document.getElementById("Message").textContent = ""
             document.getElementById("answer").value = ``;
-            dogame();
+            dogame(gamemode1);
         }, 2000);}
 
     else if (response !== String(blank1)+String(blank2) || response !== String(blank1)+", "+String(blank2)) {
