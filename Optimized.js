@@ -9,18 +9,6 @@ document.getElementById("uniquebutton").onclick = function(){
 
 document.getElementById("answer").focus();
 
-
-document.getElementById("answer").addEventListener("keydown", function (e) {
-    if (e.key === "Enter") {
-        e.preventDefault();
-        document.getElementById("button").click();
-    }
-});
-
-document.getElementById("answer").addEventListener("blur", function(){
-    document.getElementById("answer").focus()
-})
-
 function arithmatic(start, slope){
     let seq = [];
     for(let i =0; i<16; i++){
@@ -197,6 +185,17 @@ document.getElementById("button").onclick = function(){
 
     }
 }
+
+document.getElementById("answer").addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+        e.preventDefault();
+        document.getElementById("button").click();
+    }
+});
+
+document.getElementById("answer").addEventListener("blur", function(){
+    document.getElementById("answer").focus()
+})
 
 
 function gamemode(){
