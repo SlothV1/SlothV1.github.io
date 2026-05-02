@@ -17,6 +17,10 @@ document.getElementById("answer").addEventListener("keydown", function (e) {
     }
 });
 
+document.getElementById("answer").addEventListener("blur", function(){
+    document.getElementById("answer").focus()
+})
+
 function arithmatic(start, slope){
     let seq = [];
     for(let i =0; i<16; i++){
