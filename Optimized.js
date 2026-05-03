@@ -39,6 +39,20 @@ function arithmatic2(start){
     return seq;
 }
 
+
+function RATS(start){
+    let seq = [start];
+    for (let i = 0; i<16; i++){
+        let prev = seq[seq.length - 1];
+        let reversed = Number(String(prev).split("").reverse().join(""));
+        seq.push(prev + reversed)
+        console.log(seq[i])
+    }
+    return seq;
+}
+
+//str.split("").reverse().join("");
+
 function geometric(start, mult){
     let seq =[];
     for(let i =0; i<16; i++){
@@ -50,7 +64,7 @@ function geometric(start, mult){
 }
 
 function recursive(start2){
-    let seq = [start2, start2+7];
+    let seq = [start2, start2];
     for(let i = 2; i<16; i++){
         seq.push(seq[i-1] + seq[i-2]);
         console.log(seq[i]);
@@ -135,7 +149,7 @@ if (gamemode1 == "easy"){
     }
 }
 if (gamemode1 == "hard"){
-    let operations = ["recursive", "recursive+ran", "arithmatic2"];
+    let operations = ["recursive", "recursive+ran", "arithmatic2", "RATS"];
     let randomoperation = Math.floor(Math.random()*operations.length);
     let operation = operations[randomoperation];
     console.log(operation)
@@ -148,6 +162,9 @@ if (gamemode1 == "hard"){
     }
     if (operation === "arithmatic2"){
         sequence = arithmatic2(start, slope);
+    }
+    if (operation === "RATS"){
+        sequence = RATS(start);
     }
     
     
