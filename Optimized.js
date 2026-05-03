@@ -51,8 +51,6 @@ function RATS(start){
     return seq;
 }
 
-//str.split("").reverse().join("");
-
 function geometric(start, mult){
     let seq =[];
     for(let i =0; i<16; i++){
@@ -149,7 +147,7 @@ if (gamemode1 == "easy"){
     }
 }
 if (gamemode1 == "hard"){
-    let operations = ["recursive", "recursive+ran", "arithmatic2", "RATS"];
+    let operations = ["recursive", "recursive+ran", "RATS"];
     let randomoperation = Math.floor(Math.random()*operations.length);
     let operation = operations[randomoperation];
     console.log(operation)
@@ -160,11 +158,20 @@ if (gamemode1 == "hard"){
     if (operation === "recursive+ran"){
         sequence = recursiveran(start2);
     }
-    if (operation === "arithmatic2"){
-        sequence = arithmatic2(start, slope);
-    }
     if (operation === "RATS"){
         sequence = RATS(start);
+    }
+    
+    
+}
+if (gamemode1 == "medium"){
+    let operations = ["arithmatic2",];
+    let randomoperation = Math.floor(Math.random()*operations.length);
+    let operation = operations[randomoperation];
+    console.log(operation)
+
+    if (operation === "arithmatic2"){
+        sequence = arithmatic2(start, slope);
     }
     
     
@@ -242,6 +249,13 @@ function gamemode(){
         console.log(gamemode1);
         dogame(gamemode1);
 
+    }
+    document.getElementById("Mid").onclick = function(){
+        started = true;
+        gamemode1 = "medium";
+        square.hidden=true;
+        console.log(gamemode1);
+        dogame(gamemode1);
     }
 }
 
