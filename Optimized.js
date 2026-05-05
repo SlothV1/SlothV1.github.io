@@ -77,12 +77,33 @@ function recursiveran(start2){
     return seq;
 }
 
-function DA3(start, randommult, slope){
+function DA3(start){
     let seq = [start];
 
+    var slope = Math.floor(Math.random()*10)+1;;
+    let randommult = Math.floor(Math.random()*3)+1;
+
+    var functions = ["add", "sub"];
+
+    var arithmatic = functions[Math.floor(Math.random()*2)];
+    var randomadd = Math.floor(Math.random()*13)+1;;
+
+
     if (slope % 2 === 0){
-        slope++
+        slope++;
     }
+    if (randomadd % 2 == 0){
+        randomadd++;
+    }
+    if (randommult === 1){
+        randommult++;
+    }
+    if (randommult % 2 === 0){
+        randommult++;
+    }
+
+
+    console.log(slope, randommult, arithmatic, randomadd)
 
     for (let i=0; i<16; i++){
 
@@ -92,9 +113,15 @@ function DA3(start, randommult, slope){
             seq.push(prev+slope);
         }    
         else {
-            seq.push(randommult*prev + slope);
+            if (arithmatic == "add"){
+                seq.push(randommult*prev + randomadd);
+            }
+            else {
+                seq.push(randommult*prev - randomadd);
+            }
+
         }
-        console.log(seq[i])
+        console.log(seq[i]);
         
     }
     return seq;
@@ -159,7 +186,6 @@ function writenumbers(seq){
 
 let start = Math.floor(Math.random()*5)+1;
 let slope = Math.floor(Math.random()*10)+1;
-let randommult = Math.floor(Math.random()*3)+1
 let multlist = [-2, 2];
 let mult = multlist[Math.floor(Math.random()*multlist.length)]
 let start2 = Math.floor(Math.random()*20)+1;
@@ -202,7 +228,7 @@ if (gamemode1 == "hard"){
         sequence = RATS(start);
     }
    if (operation === "DA3"){
-        sequence = DA3(start, randommult, slope)
+        sequence = DA3(start)
     }
     
     
@@ -354,4 +380,3 @@ function tutorial1(){
         tutorial.style.opacity = "1";
     }
 }
-//--------------------------------
