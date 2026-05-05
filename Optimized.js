@@ -9,6 +9,8 @@ document.getElementById("uniquebutton").onclick = function(){
 
 document.getElementById("answer").focus();
 
+//EASY
+
 function arithmatic(start, slope){
     let seq = [];
     for(let i =0; i<16; i++){
@@ -17,6 +19,19 @@ function arithmatic(start, slope){
     }
     return seq;
 }
+
+function geometric(start, mult){
+    let seq =[];
+    for(let i =0; i<16; i++){
+        seq.push(start*mult**i);
+        console.log(seq[i]);
+        
+    }
+    return seq;
+}
+//--------------------------------
+
+//MEDIUM
 
 function arithmatic2(start){
     let seq = [];
@@ -39,6 +54,52 @@ function arithmatic2(start){
     return seq;
 }
 
+function recursive(start2){
+    let seq = [start2, start2];
+    for(let i = 2; i<16; i++){
+        seq.push(seq[i-1] + seq[i-2]);
+        console.log(seq[i]);
+    }
+    return seq;
+}
+//--------------------------------
+
+
+//HARD
+
+function recursiveran(start2){
+    let rand = Math.floor(Math.random()*21)-10;
+    let seq = [start2, start2+rand];
+    for(let i = 2; i<16; i++){
+        seq.push(seq[i-1] + seq[i-2]+rand);
+        console.log(seq[i]);
+    }
+    return seq;
+}
+
+function DA3(start, randommult, slope){
+    let seq = [start];
+
+    if (slope % 2 === 0){
+        slope++
+    }
+
+    for (let i=0; i<16; i++){
+
+        let prev = seq[seq.length - 1] ?? start;
+
+        if (prev % 2 === 0){
+            seq.push(prev+slope);
+        }    
+        else {
+            seq.push(randommult*prev + slope);
+        }
+        console.log(seq[i])
+        
+    }
+    return seq;
+}
+
 
 function RATS(start){
     let seq = [start];
@@ -51,36 +112,9 @@ function RATS(start){
     return seq;
 }
 
-function geometric(start, mult){
-    let seq =[];
-    for(let i =0; i<16; i++){
-        seq.push(start*mult**i);
-        console.log(seq[i]);
-        
-    }
-    return seq;
-}
+//--------------------------------
 
-function recursive(start2){
-    let seq = [start2, start2];
-    for(let i = 2; i<16; i++){
-        seq.push(seq[i-1] + seq[i-2]);
-        console.log(seq[i]);
-    }
-    return seq;
-}
-
-function recursiveran(start2){
-    let rand = Math.floor(Math.random()*21)-10;
-    let seq = [start2, start2+rand];
-    for(let i = 2; i<16; i++){
-        seq.push(seq[i-1] + seq[i-2]+rand);
-        console.log(seq[i]);
-    }
-    return seq;
-}
-
-
+//DISPLAYING NUMBERS
 
 function writenumbers(seq){
     let x1 = Math.floor(Math.random()*7)+1;;
@@ -119,17 +153,26 @@ function writenumbers(seq){
     }
 }
 
+//--------------------------------
 
-
+// VARIABLES FOR VARIOUS SEQUENCES
 
 let start = Math.floor(Math.random()*5)+1;
 let slope = Math.floor(Math.random()*10)+1;
+let randommult = Math.floor(Math.random()*3)+1
 let multlist = [-2, 2];
 let mult = multlist[Math.floor(Math.random()*multlist.length)]
 let start2 = Math.floor(Math.random()*20)+1;
+
+
+
 if (start2 === 5 || start2 === 10 || start2 === 20){
     start2--;
 }
+
+//--------------------------------
+
+//SEQUENCE CHOOSING
 
 let sequence;
 if (gamemode1 == "easy"){
@@ -147,25 +190,25 @@ if (gamemode1 == "easy"){
     }
 }
 if (gamemode1 == "hard"){
-    let operations = ["recursive", "recursive+ran", "RATS"];
+    let operations = ["recursive+ran", "RATS", "DA3"];
     let randomoperation = Math.floor(Math.random()*operations.length);
     let operation = operations[randomoperation];
     console.log(operation)
 
-    if (operation === "recursive"){
-        sequence = recursive(start2);
-    }
     if (operation === "recursive+ran"){
         sequence = recursiveran(start2);
     }
     if (operation === "RATS"){
         sequence = RATS(start);
     }
+   if (operation === "DA3"){
+        sequence = DA3(start, randommult, slope)
+    }
     
     
 }
 if (gamemode1 == "medium"){
-    let operations = ["arithmatic2",];
+    let operations = ["arithmatic2", "recursive"];
     let randomoperation = Math.floor(Math.random()*operations.length);
     let operation = operations[randomoperation];
     console.log(operation)
@@ -173,15 +216,25 @@ if (gamemode1 == "medium"){
     if (operation === "arithmatic2"){
         sequence = arithmatic2(start, slope);
     }
+    if (operation === "recursive"){
+        sequence = recursive(start2);
+    }
     
     
 }
+
+//--------------------------------
+
+
 
 
 let blank1;
 let blank2;
 
 writenumbers(sequence);
+
+
+//WIN CONDITION
 
 console.log(blank1, blank2);
 document.getElementById("button").onclick = function(){
@@ -211,6 +264,8 @@ document.getElementById("button").onclick = function(){
     }
 }
 
+//-------------------------------- END OF FUNCTION
+
 document.getElementById("answer").addEventListener("keydown", function (e) {
     if (e.key === "Enter") {
         e.preventDefault();
@@ -222,6 +277,9 @@ document.getElementById("answer").addEventListener("blur", function(){
     document.getElementById("answer").focus();
 })
 
+
+
+//GAMEMODE SELECTION
 
 function gamemode(){
     document.getElementById("uniquebutton").onclick = function(){
@@ -261,6 +319,10 @@ function gamemode(){
 
 gamemode();
 
+//--------------------------------
+
+//TUTORIAL
+
 function tutorial1(){
 
     const square2 = document.getElementById("square2");
@@ -292,3 +354,4 @@ function tutorial1(){
         tutorial.style.opacity = "1";
     }
 }
+//--------------------------------
