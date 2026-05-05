@@ -284,7 +284,6 @@ document.getElementById("button").onclick = function(){
         document.getElementById("Message").textContent = "Incorrect";
         setTimeout(() => {
             document.getElementById("Message").textContent = "";
-            document.getElementById("answer").value = ``;
         }, 2000);}
 
     }
