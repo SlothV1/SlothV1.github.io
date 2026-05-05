@@ -266,7 +266,7 @@ console.log(blank1, blank2);
 document.getElementById("button").onclick = function(){
 
     response = document.getElementById("answer").value;
-    if (response == String(blank1) + String(blank2) || response == String(blank1)+", "+String(blank2)) {
+    if (response == String(blank1) + String(blank2) || response == String(blank1)+", "+String(blank2) || response == String(blank1)+","+String(blank2) || response == String(blank1)+" "+String(blank2)) {
         console.log("CONGRATS!!!!");
         document.getElementById("Message").textContent = "You won!";
 
@@ -276,10 +276,8 @@ document.getElementById("button").onclick = function(){
             dogame(gamemode1);
         }, 2000);}
 
-        else if (
-            response !== String(blank1)+String(blank2) &&
-            response !== String(blank1)+", "+String(blank2)
-        ){
+        else {
+
         console.log("Incorrect");
         document.getElementById("Message").textContent = "Incorrect";
         setTimeout(() => {
@@ -379,3 +377,4 @@ function tutorial1(){
         tutorial.style.opacity = "1";
     }
 }
+//--------------------------------
