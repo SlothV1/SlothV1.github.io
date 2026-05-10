@@ -1,11 +1,18 @@
+// Copyright 2026 Grant Kimball. All rights reserved.
+
 document.getElementById('tutorial').style.opacity = "0";
 let started = false;
+let wondaily = false;
+let inputfield = document.getElementById("answer");
+inputfield.maxLength = 10;
+inputfield.chara
 
 function dogame(gamemode1){
 
 document.getElementById("uniquebutton").onclick = function(){
     tutorial1();
 }
+
 
 document.getElementById("answer").focus();
 
@@ -207,7 +214,6 @@ if (gamemode1 == "easy"){
     let operation = operations[randomoperation];
     console.log(operation);
 
-
     if (operation === "arithmatic"){
         sequence = arithmatic(start, slope);
     }
@@ -378,3 +384,72 @@ function tutorial1(){
     }
 }
 //--------------------------------
+
+//DAILY
+
+function daily(){
+    started = true
+    const square = document.getElementById("square");
+    console.log("Daily")
+    square.hidden = true
+
+    let dailylist = ["5", "", "8", "", "15", "20", "26", "33", "41", "50", "60", "71", "83", "96", "100", "115"];
+    let dailyblank1 = "6"
+    let dailyblank2 = "11"
+
+    for (let i = 0; i<16; i++){
+
+
+        let h = "myH"+ String(i+1);
+        let table = document.getElementById(h);
+        table.style.backgroundColor = "white";
+        table.textContent = dailylist[i];
+
+        if (wondaily == true){
+            table.textContent = "🏆"
+        }
+
+        if (table.textContent == ""){
+            table.style.backgroundColor = "blanchedalmond"
+        }
+
+        let length = 50;
+        table.style.fontSize = length +"px";
+
+        while (table.scrollWidth > table.clientWidth && length > 10){
+            length-=1;
+            table.style.fontSize = length + "px";
+
+        }
+        
+        document.getElementById("button").onclick = function(){
+
+        response = document.getElementById("answer").value;
+        if (response == String(dailyblank1) + String(dailyblank2) || response == String(dailyblank1)+", "+String(dailyblank2) || response == String(dailyblank1)+","+String(dailyblank2) || response == String(dailyblank1)+" "+String(dailyblank2)) {
+            console.log("CONGRATS!!!!");
+            document.getElementById("Message").textContent = "You won!";
+
+            setTimeout(() => {
+                document.getElementById("Message").textContent = "";
+                wondaily = true;
+                gamemode();
+            }, 2000);
+        } 
+        else {
+        console.log("Incorrect");
+        document.getElementById("Message").textContent = "Incorrect";
+        setTimeout(() => {
+            document.getElementById("Message").textContent = "";
+        }, 2000);}
+        }
+        
+    }
+}
+
+
+
+//--------------------------------
+document.getElementById("daily").onclick = function(){
+    daily();
+}
+
