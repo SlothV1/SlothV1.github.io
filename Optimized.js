@@ -427,7 +427,7 @@ function daily(){
         response = document.getElementById("answer").value;
         if (response == String(dailyblank1) + String(dailyblank2) || response == String(dailyblank1)+", "+String(dailyblank2) || response == String(dailyblank1)+","+String(dailyblank2) || response == String(dailyblank1)+" "+String(dailyblank2)) {
             console.log("CONGRATS!!!!");
-            document.getElementById("Message").textContent = "You won!";
+            document.getElementById("Message").textContent = "Happy Mother's Day!";
 
             setTimeout(() => {
                 document.getElementById("Message").textContent = "";
