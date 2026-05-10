@@ -274,7 +274,7 @@ document.getElementById("button").onclick = function(){
     response = document.getElementById("answer").value;
     if (response == String(blank1) + String(blank2) || response == String(blank1)+", "+String(blank2) || response == String(blank1)+","+String(blank2) || response == String(blank1)+" "+String(blank2)) {
         console.log("CONGRATS!!!!");
-        document.getElementById("Message").textContent = "You won!";
+        document.getElementById("Message").textContent = "You Won!";
 
         setTimeout(() => {
             document.getElementById("Message").textContent = "";
