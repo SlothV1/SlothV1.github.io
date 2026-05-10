@@ -1,5 +1,3 @@
-// Copyright 2026 Grant Kimball. All rights reserved.
-
 document.getElementById('tutorial').style.opacity = "0";
 let started = false;
 let wondaily = false;
@@ -274,7 +272,7 @@ document.getElementById("button").onclick = function(){
     response = document.getElementById("answer").value;
     if (response == String(blank1) + String(blank2) || response == String(blank1)+", "+String(blank2) || response == String(blank1)+","+String(blank2) || response == String(blank1)+" "+String(blank2)) {
         console.log("CONGRATS!!!!");
-        document.getElementById("Message").textContent = "You Won!";
+        document.getElementById("Message").textContent = "You won!";
 
         setTimeout(() => {
             document.getElementById("Message").textContent = "";
