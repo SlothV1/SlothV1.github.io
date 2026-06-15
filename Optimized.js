@@ -1,3 +1,5 @@
+// Copyright 2026 Grant Kimball. All rights reserved.
+
 document.getElementById('tutorial').style.opacity = "0";
 let started = false;
 let wondaily = false;
@@ -134,6 +136,7 @@ function DA3(start){
 
 
 function RATS(start){
+    start = Math.floor(Math.random()*10)+1
     let seq = [start];
     for (let i = 0; i<16; i++){
         let prev = seq[seq.length - 1];
@@ -391,7 +394,7 @@ function daily(){
     console.log("Daily")
     square.hidden = true
 
-    let dailylist = ["5", "", "8", "", "15", "20", "26", "33", "41", "50", "60", "71", "83", "96", "100", "115"];
+    let dailylist = ["1", "8", "-6", "15", "-13", "", "-20", "29", "-27", "36", "-34", "43", "-41", "50", "", "57"];
     let dailyblank1 = "6"
     let dailyblank2 = "11"
 
