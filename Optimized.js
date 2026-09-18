@@ -394,9 +394,9 @@ function daily(){
     console.log("Daily")
     square.hidden = true
 
-    let dailylist = ["1", "8", "-6", "15", "-13", "", "-20", "29", "-27", "36", "-34", "43", "-41", "50", "", "57"];
-    let dailyblank1 = "22"
-    let dailyblank2 = "-48"
+    let dailylist = ["2", "", "5", "7", "10", "26", "17", "63", "26", "124", "", "215", "50", "342", "65", "511"];
+    let dailyblank1 = "0"
+    let dailyblank2 = "37"
 
     for (let i = 0; i<16; i++){
 
